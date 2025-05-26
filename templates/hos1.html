@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Öğrenci Bilgi Sistemi</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
+    
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css.css')}}">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">Öğrenci Bilgi Sistemi</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/ana">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Dashbord">Dashbord</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/duyurlar">Duyurlar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Akademik">Akademik_Yönetim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Uyumluluk">Güvenlik_ve_Uyumluluk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Yenileme">Kayıt_ve_Kayıt_Yenileme</a>
+            </li>
+          </ul>
+          <div class="auth-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light me-2">Giriş Yap</a>
+                <a href="{{ url_for('register') }}" class="btn btn-light">Kayıt Ol</a>
+            {% endif %}
+        </div>
+        </div>
+      </div>
+    </nav>
+    
+    
+
+    <aside>
+      <div class="sidbare">
+        <div class="logo-details">
+          <span id="spand"class="bi bi-file-earmark-person"></span>
+          <span class="logo-name"> Öğrenci Bilgi Sistemi </span>
+        </div>
+        <div class="search">
+              <span class="search-icon bi bi-search"></span>
+              <input class="search-input" type="search"  placeholder="search">
+            </div>
+        <ul class="nav-links">
+          <li class="li-links">
+            <div>
+              <a href="/hos1">  
+                <span class="bi bi-house-fill"></span>
+                <span>Hoş Geldiniz</span>
+              </a>
+            </div>
+          </li>
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-menu-button-wide-fill"></span>
+              <span>Genel islemler</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+                <li  style="margin-bottom: 10px;"><a href="/hos2"> Genel bilgiler</a></li>
+                <li><a href="/hos3"> Ders Programi </a></li>
+              </ul>
+          </li>
+          <li class="li-links">
+            <a href="# ">
+              <span class="bi bi-card-list"></span>
+              <span> Ders ve donem islemleri</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+                <li  style="margin-bottom: 10px;"><a href="/hos4">Ders kayit</a></li>
+                <li  style="margin-bottom: 10px;"><a href="/hos5"> Not listesi</a></li>
+              </ul>
+          </li>
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar-event"></span>
+              <span> Forme islemleri</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist">
+                <li  style="margin-bottom: 10px;"><a href="/hos"> Anketler</a></li> 
+                <li style="margin-bottom: 10px;"><a href="#"> ogrenci bilgi forumu </a></li> 
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar2-event"></span>
+              <span> Akademik_Yönetim</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href="#"> Akademik  </a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href=" #">
+              <span class="bi bi-shield-lock"></span>
+              <span> Guvenlik</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href=" # "> sifri degistir</a></li>
+                <li  style="margin-bottom: 10px;"><a href=" # "> email degistir</a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar-event-fill"></span>
+              <span> duyurlar</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href="#  "> Acil duyurular</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#  "> genel duyurlar</a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#  ">
+              <span class="bi bi-calendar"></span>
+              <span> Akademik Takvim</span>
+            </a><span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+               <li  style="margin-bottom: 10px;"><a href="#"> 2024-2025</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#"> 2023-2024</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#"> 2022-2023</a></li>
+                <li  style="margin-bottom: 10px;"><a href="# "> 2021-2022</a></li>
+                <li> <a href="#"> 2020-2021 </a></li>
+              </ul>
+          </li>
+          
+      </div>
+    </aside>
+    
+
+    
+ 
+    <section id="sec">
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Ana Sayfa</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="auth-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light me-2">Giriş Yap</a>
+                <a href="{{ url_for('register') }}" class="btn btn-light">Kayıt Ol</a>
+            {% endif %}
+        </div>
+    </div>
+    </section>
+    
+    <footer>
+
+      <h1 id="hh"> Öğrenci Bilgi Sisteminize Basariyla Girdiniz</h1>
+
+
+    </footer>
+   
+    <div class="container mt-4"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

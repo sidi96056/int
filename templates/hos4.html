@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Öğrenci Bilgi Sistemi</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
+    
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css.css')}}">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">Öğrenci Bilgi Sistemi</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/ana">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Dashbord">Dashbord</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/duyurlar">Duyurlar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Akademik">Akademik_Yönetim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Uyumluluk">Güvenlik_ve_Uyumluluk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Yenileme">Kayıt_ve_Kayıt_Yenileme</a>
+            </li>
+          </ul>
+          <div class="auth-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light me-2">Giriş Yap</a>
+                <a href="{{ url_for('register') }}" class="btn btn-light">Kayıt Ol</a>
+            {% endif %}
+        </div>
+        </div>
+      </div>
+    </nav>
+    
+    
+
+    <aside>
+      <div class="sidbare">
+        <div class="logo-details">
+          <span id="spand"class="bi bi-file-earmark-person"></span>
+          <span class="logo-name"> Öğrenci Bilgi Sistemi </span>
+        </div>
+        <div class="search">
+              <span class="search-icon bi bi-search"></span>
+              <input class="search-input" type="search"  placeholder="search">
+            </div>
+        <ul class="nav-links">
+          <li class="li-links">
+            <div>
+              <a href="/hos1">  
+                <span class="bi bi-house-fill"></span>
+                <span>Hoş Geldiniz</span>
+              </a>
+            </div>
+          </li>
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-menu-button-wide-fill"></span>
+              <span>Genel islemler</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+                <li  style="margin-bottom: 10px;"><a href="/hos2"> Genel bilgiler</a></li>
+                <li><a href="/hos3"> Ders Programi </a></li>
+              </ul>
+          </li>
+          <li class="li-links">
+            <a href="# ">
+              <span class="bi bi-card-list"></span>
+              <span> Ders ve donem islemleri</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+                <li  style="margin-bottom: 10px;"><a href="/hos4">Ders kayit</a></li>
+                <li  style="margin-bottom: 10px;"><a href="/hos5"> Not listesi</a></li>
+              </ul>
+          </li>
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar-event"></span>
+              <span> Forme islemleri</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist">
+                <li  style="margin-bottom: 10px;"><a href="/hos"> Anketler</a></li> 
+                <li style="margin-bottom: 10px;"><a href="#"> ogrenci bilgi forumu </a></li> 
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar2-event"></span>
+              <span> Akademik_Yönetim</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href="#"> Akademik  </a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href=" #">
+              <span class="bi bi-shield-lock"></span>
+              <span> Guvenlik</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href=" # "> sifri degistir</a></li>
+                <li  style="margin-bottom: 10px;"><a href=" # "> email degistir</a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar-event-fill"></span>
+              <span> duyurlar</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href="#  "> Acil duyurular</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#  "> genel duyurlar</a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#  ">
+              <span class="bi bi-calendar"></span>
+              <span> Akademik Takvim</span>
+            </a><span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+               <li  style="margin-bottom: 10px;"><a href="#"> 2024-2025</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#"> 2023-2024</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#"> 2022-2023</a></li>
+                <li  style="margin-bottom: 10px;"><a href="# "> 2021-2022</a></li>
+                <li> <a href="#"> 2020-2021 </a></li>
+              </ul>
+          </li>
+          
+      </div>
+    </aside>
+    
+
+    
+ 
+    <section id="sec">
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Ana Sayfa</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="auth-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light me-2">Giriş Yap</a>
+                <a href="{{ url_for('register') }}" class="btn btn-light">Kayıt Ol</a>
+            {% endif %}
+        </div>
+    </div>
+    </section>
+    
+
+    <footer>
+
+      
+      <div class="panel panel-default"><div class="panel-heading"><table style="width:100%"><tbody><tr>
+        <td style="width:75%">
+        <span id="lblDersKayit" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Ders Kayıt</span>           
+        <span id="lblHeader1" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Öğrenci Bilgileri</span>
+            
+            
+        </td>
+        <td style="text-align:right"><div class="input-group"><div class="input-group-btn"><div class="btn-group dropdown" role="group">  
+        <a id="btnDKsecenekM" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="javascript:__doPostBack('btnDKsecenekM','')" style="color:#5B636A;font-family:Open Sans;font-size:9pt;width:98%"><span class="fal fa-user-cog text-danger"></span> Ders Kayıt Seçenekleri&nbsp;</a>
+        <ul class="dropdown-menu mt-0 w-100 shadow border-outline-success">
+        <li class="dropdown-item p-1"><a id="btnDersProgrami" class="btn btn-block btn-xs" href="javascript:__doPostBack('btnDersProgrami','')" style="color:#5B636A;font-family:Open Sans;font-size:9pt;text-align: left !important;font-size:12px;"><span class="fal fa-business-time"></span>&nbsp;&nbsp;Ders Programı</a></li>
+        <li class="divider"></li><li class="dropdown-item p-1"><a id="btnDersProgBolum" class="btn btn-block btn-xs" href="javascript:__doPostBack('btnDersProgBolum','')" style="color:#5B636A;font-family:Open Sans;font-size:9pt;text-align: left !important;font-size:12px;"><span class="fal fa-clock"></span>&nbsp;&nbsp;Bölüm Ders Programı</a></li>
+        <li class="divider"></li><li class="dropdown-item p-1"><a id="btnMufredatDers" class="btn btn-block btn-xs" href="javascript:__doPostBack('btnMufredatDers','')" style="color:#5B636A;font-family:Open Sans;font-size:9pt;text-align: left !important;font-size:12px;"><span class="fal fa-folders"></span>&nbsp;&nbsp;Müfredat Durumu</a></li>
+        <li class="divider"></li><li class="dropdown-item p-1"><a id="btnDersKayitGecmis" class="btn btn-block btn-xs" href="javascript:__doPostBack('btnDersKayitGecmis','')" style="color:#5B636A;font-family:Open Sans;font-size:9pt;text-align: left !important;font-size:12px;"><span class="fal fa-copy"></span>&nbsp;&nbsp;Ders Kayıt Geçmişi</a></li>
+        <li class="divider"></li><li class="dropdown-item p-1"><a id="btnYazdir" class="btn btn-block btn-xs" href="javascript:__doPostBack('btnYazdir','')" style="color:#5B636A;font-family:Open Sans;font-size:9pt;text-align: left !important;font-size:12px;"><span class="fal fa-print"></span>&nbsp;&nbsp;Yazdır</a></li>
+        <li class="divider"></li><li class="dropdown-item p-1"><a id="btnDersKayitMesajlar" class="btn btn-block btn-xs" href="javascript:__doPostBack('btnDersKayitMesajlar','')" style="color:#5B636A;font-family:Open Sans;font-size:9pt;text-align: left !important;font-size:12px;"><span class="fal fa-envelope"></span>&nbsp;&nbsp;Ders Kayıt Mesajları</a></li>
+        </ul></div></div></div></td></tr></tbody></table></div>                 
+        <table id="tblOgrInfoBar" style="width:100%">
+            <tbody><tr>
+              <td style="width:13%"><span id="lblOgrenciNoAdSoyad" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Öğrenci No/Adı Soyadı</span></td>
+              <td style="width:35%"><span id="lblOgrenciNo" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">2500000001 / yeni basvuru yapan </span></td>
+              <td style="width:22%"><span id="lblTutarOncekiDonemBakiyeH" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Önceki Dönem Bakiye</span><span id="lblTutarOncekiDonemBakiyeDurum" class="text-danger" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"></span></td>
+              <td style="text-align:right; width:22%"><span id="lblTutarOncekiDonemBakiye" class="ucretLabelStyle" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">0,00 TL</span>&nbsp;&nbsp;&nbsp;</td>
+              <td style="text-align:right;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="Label21" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Fakülte - Program/Sınıf</span></td>
+              <td><span id="lblFakProgAd" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">GÜMÜŞHANE </span><span id="lblAsama" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"></span></td>
+              <td>
+        <span id="lblTutarAktifDonemBorcH" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Dönemlik Ücret</span>
+        </td>
+              <td style="text-align:right;"><span id="lblTutarAktifDonemBorc" class="ucretLabelStyle" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">0 TL</span>&nbsp;&nbsp;&nbsp;</td>
+              <td style="text-align:right;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="Label22" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Kayıt Tarihi / Nedeni</span></td>
+              <td>
+        <span id="lblKayTarNeden" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">25.05.2025 / Yurtdışı Öğrenci</span></td>
+              <td><span id="lblTutarToplamH" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Ödenmesi&nbsp;Gereken&nbsp;Toplam&nbsp;Ücret</span></td>
+              <td style="text-align:right;"><span id="lblTutarToplam" class="ucretLabelStyle" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">0 TL</span>&nbsp;&nbsp;&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="Label5" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Bağlı Olunan Müfredat</span></td>
+              <td><span id="lblMufredatAd" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">  Hala secmediniz </span></td>
+              <td><span id="lblTutarAktifDonemAlacakH" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Ödenen Toplam Ücret</span></td>
+              <td style="text-align:right;"><span id="lblTutarAktifDonemAlacak" class="ucretLabelStyle" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">0 TL</span>&nbsp;&nbsp;&nbsp;</td>
+              <td style="text-align:right;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td><span id="Label43" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Öğrenim Süre Durum</span></td>
+              <td><span id="lblOgrenimSureDurum" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Normal Süresi İçinde</span></td>
+              <td>
+        <span id="lblTutarGenelBakiyeH" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Genel Bakiye</span>
+        <span id="lblTutarBakiyeDurum" class="text-danger" style="color:Blue;font-family:Open Sans;font-size:8pt;"></span>
+        </td>
+              <td style="text-align:right;"><span id="lblTutarGenelBakiye" class="ucretLabelStyle text-danger" style="color:Blue;font-family:Open Sans;font-size:8pt;">0,00 TL</span>&nbsp;<span id="lblTutarGenelBakiyeText" title="0,00 TL" class="ucretLabelStyle text-danger" style="color:Blue;font-family:Open Sans;font-size:8pt;"></span>&nbsp;&nbsp;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span id="Label23" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Genel Ortalama</span></td>
+              <td>
+        <span id="lblAnoAgno" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">0</span><span id="lblHazirlikDurum" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"></span></td>
+              <td colspan="3"></td>
+            </tr>
+          </tbody></table>
+          </div>
+    </footer>
+
+    <div class="container mt-4"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

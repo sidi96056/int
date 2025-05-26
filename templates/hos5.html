@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Öğrenci Bilgi Sistemi</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
+    
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css.css')}}">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">Öğrenci Bilgi Sistemi</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/ana">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Dashbord">Dashbord</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/duyurlar">Duyurlar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Akademik">Akademik_Yönetim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Uyumluluk">Güvenlik_ve_Uyumluluk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Yenileme">Kayıt_ve_Kayıt_Yenileme</a>
+            </li>
+          </ul>
+          <div class="auth-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light me-2">Giriş Yap</a>
+                <a href="{{ url_for('register') }}" class="btn btn-light">Kayıt Ol</a>
+            {% endif %}
+        </div>
+        </div>
+      </div>
+    </nav>
+    
+    
+
+    <aside>
+      <div class="sidbare">
+        <div class="logo-details">
+          <span id="spand"class="bi bi-file-earmark-person"></span>
+          <span class="logo-name"> Öğrenci Bilgi Sistemi </span>
+        </div>
+        <div class="search">
+              <span class="search-icon bi bi-search"></span>
+              <input class="search-input" type="search"  placeholder="search">
+            </div>
+        <ul class="nav-links">
+          <li class="li-links">
+            <div>
+              <a href="/hos1">  
+                <span class="bi bi-house-fill"></span>
+                <span>Hoş Geldiniz</span>
+              </a>
+            </div>
+          </li>
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-menu-button-wide-fill"></span>
+              <span>Genel islemler</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+                <li  style="margin-bottom: 10px;"><a href="/hos2"> Genel bilgiler</a></li>
+                <li><a href="/hos3"> Ders Programi </a></li>
+              </ul>
+          </li>
+          <li class="li-links">
+            <a href="# ">
+              <span class="bi bi-card-list"></span>
+              <span> Ders ve donem islemleri</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+                <li  style="margin-bottom: 10px;"><a href="/hos4">Ders kayit</a></li>
+                <li  style="margin-bottom: 10px;"><a href="/hos5"> Not listesi</a></li>
+              </ul>
+          </li>
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar-event"></span>
+              <span> Forme islemleri</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist">
+                <li  style="margin-bottom: 10px;"><a href="/hos"> Anketler</a></li> 
+                <li style="margin-bottom: 10px;"><a href="#"> ogrenci bilgi forumu </a></li> 
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar2-event"></span>
+              <span> Akademik_Yönetim</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href="#"> Akademik  </a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href=" #">
+              <span class="bi bi-shield-lock"></span>
+              <span> Guvenlik</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href=" # "> sifri degistir</a></li>
+                <li  style="margin-bottom: 10px;"><a href=" # "> email degistir</a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#">
+              <span class="bi bi-calendar-event-fill"></span>
+              <span> duyurlar</span>
+            </a>
+            <span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+              <li  style="margin-bottom: 10px;"><a href="#  "> Acil duyurular</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#  "> genel duyurlar</a></li>
+              </ul>
+          </li>
+
+          <li class="li-links">
+            <a href="#  ">
+              <span class="bi bi-calendar"></span>
+              <span> Akademik Takvim</span>
+            </a><span class="bi bi-chevron-down"></span>
+              <ul id="close" class="sublist"> 
+               <li  style="margin-bottom: 10px;"><a href="#"> 2024-2025</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#"> 2023-2024</a></li>
+                <li  style="margin-bottom: 10px;"><a href="#"> 2022-2023</a></li>
+                <li  style="margin-bottom: 10px;"><a href="# "> 2021-2022</a></li>
+                <li> <a href="#"> 2020-2021 </a></li>
+              </ul>
+          </li>
+          
+      </div>
+    </aside>
+    
+
+    
+ 
+    <section id="sec">
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Ana Sayfa</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="auth-buttons">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light me-2">Giriş Yap</a>
+                <a href="{{ url_for('register') }}" class="btn btn-light">Kayıt Ol</a>
+            {% endif %}
+        </div>
+    </div>
+    </section>
+    
+
+    <footer>
+
+      <tbody><tr>
+        <td style="height: 20px; text-align: left;">
+            <span id="Label1" style="display:inline-block;color:#3A3A3A;font-family:Open Sans;font-size:8pt;width:70px;">Dönem</span><select name="cmbDonemler" onchange="javascript:setTimeout('__doPostBack(\'cmbDonemler\',\'\')', 0)" id="cmbDonemler" class="form-control select2 select2-hidden-accessible" style="font-family:Open Sans;font-size:8pt;width:275px;" data-select2-id="cmbDonemler" tabindex="-1" aria-hidden="true">
+<option selected="selected" value="20242" data-select2-id="2">2024-2025 Bahar Dönemi</option>
+<option value="20241">2024-2025 Güz Dönemi</option>
+
+</select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 275px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-cmbDonemler-container"><span class="select2-selection__rendered" id="select2-cmbDonemler-container" role="textbox" aria-readonly="true" title="2024-2025 Bahar Dönemi">2024-2025 Bahar Dönemi</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="tabTAB" class="MyTabStyle ajax__tab_container ajax__tab_default" style="width: 100%; visibility: visible;">
+<div id="tabTAB_header" class="ajax__tab_header">
+<span id="tabTAB_OZET_tab" class="ajax__tab_active"><span class="ajax__tab_outer"><span class="ajax__tab_inner"><span id="__tab_tabTAB_OZET" class="ajax__tab_tab">
+                        <span id="tabTAB_OZET_lblTabOZET" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;Özet Not Durumu&nbsp;&nbsp;</span></span></span></span></span><span id="tabTAB_TIPYS_tab" style="display: none;"><span class="ajax__tab_outer"><span class="ajax__tab_inner"><span id="__tab_tabTAB_TIPYS" class="ajax__tab_tab">
+                        
+                    </span></span></span></span><span id="tabTAB_TIPOPTIK_tab" style="display: none;"><span class="ajax__tab_outer"><span class="ajax__tab_inner"><span id="__tab_tabTAB_TIPOPTIK" class="ajax__tab_tab">
+                        
+                    </span></span></span></span>
+</div><div id="tabTAB_body" style="height:0px;" class="ajax__tab_body">
+<div id="tabTAB_OZET" class="ajax__tab_panel" style="visibility: visible;">
+
+</div><div id="tabTAB_TIPYS" style="display:none;visibility:hidden;" class="ajax__tab_panel">
+
+</div><div id="tabTAB_TIPOPTIK" style="display:none;visibility:hidden;" class="ajax__tab_panel">
+
+</div>
+</div>
+</div></td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+<table class="grdStyle" cellspacing="0" cellpadding="1" align="Left" grdinit_0="0" grdinit_dee="False" grdinit_dsa="False" grdinit_dsm="False" grdinit_ds_cnt="8" id="grd_not_listesi" style="color:#3b3a36;border-color:#e7e7e7;border-width:1px;border-style:solid;font-family:Tahoma;font-size:8pt;font-weight:normal;width:100%;border-collapse:collapse;">
+<tbody><tr align="left" style="color:#fff;background-color:#6b6b6b;font-weight:normal;height:22px;">
+<th align="left" scope="col" style="width:20px;padding:2px;"><a href="javascript:__doPostBack('grd_not_listesi','Sort$SUBE_KOD')" style="color:#fff;">Şb</a></th><th align="left" scope="col" style="width:65px;padding:2px;"><a href="javascript:__doPostBack('grd_not_listesi','Sort$DERS_KOD')" style="color:#fff;">Ders Kodu</a></th><th align="left" scope="col" style="width:250px;padding:2px;"><a href="javascript:__doPostBack('grd_not_listesi','Sort$DERS_AD')" style="color:#fff;">Ders Adı</a></th><th align="left" scope="col" style="padding:2px;"><a href="javascript:__doPostBack('grd_not_listesi','Sort$DERS_RES_STATE_STR')" style="color:#fff;">S.Durum</a></th><th align="left" scope="col" style="padding:2px;">Sınav Notları</th><th class="grdHeaderRight" align="right" scope="col" style="width:45px;padding:2px;"><a href="javascript:__doPostBack('grd_not_listesi','Sort$ORT')" style="color:#fff;">Ort</a></th><th class="grdHeaderRight" align="right" scope="col" style="width:45px;padding:2px;"><a href="javascript:__doPostBack('grd_not_listesi','Sort$HARF')" style="color:#fff;">Not</a></th><th class="grdHeaderRight" align="left" scope="col" style="padding:2px;"><a href="javascript:__doPostBack('grd_not_listesi','Sort$GECME_DURUM')" style="color:#fff;">Durumu</a></th><th align="left" scope="col" style="width:105px;padding:2px;">&nbsp;</th>
+</tr><tr onmouseover="this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#CCE0FC'" onmouseout="this.style.backgroundColor=this.originalstyle;" style="color: rgb(59, 58, 54); border-color: rgb(231, 231, 231); border-width: 1px; border-style: solid; height: 22px;">
+<td align="left" style="padding:3px;">0</td><td align="left" style="padding:3px;">
+                            <span id="grd_not_listesi_lblDersKod_0" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">-------</span>
+                            
+                        </td><td align="left" style="padding:3px;">-------------</td><td align="left" style="padding:3px;"><font color="red">Sonuçlandırılmadı</font></td><td align="left" style="padding:3px;">
+                            <span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Vize&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"> Final&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            
+                            
+                        </td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="left" style="width:105px;padding:3px;">
+                            <a id="grd_not_listesi_btnIstatistik_0" accesskey="i" class="btn btn-default btn-xs" href="javascript:__doPostBack('grd_not_listesi$ctl02$btnIstatistik','')" style="display:inline-block;color:#5B636A;font-family:Open Sans;font-size:9pt;width:100px;"><span class="fal fa-chart-pie-alt"></span>İstatistik</a>
+                            
+                        </td>
+</tr><tr onmouseover="this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#CCE0FC'" onmouseout="this.style.backgroundColor=this.originalstyle;" style="color: rgb(59, 58, 54); background-color: white; border-color: rgb(231, 231, 231); border-width: 1px; border-style: solid; height: 22px;">
+<td align="left" style="padding:3px;">0</td><td align="left" style="padding:3px;">
+                            <span id="grd_not_listesi_lblDersKod_1" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">-------</span>
+                            
+                        </td><td align="left" style="padding:3px;">-------------</td><td align="left" style="padding:3px;"><font color="red">Sonuçlandırılmadı</font></td><td align="left" style="padding:3px;">
+                            <span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Vize&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"> Final&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            
+                            
+                        </td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="left" style="width:105px;padding:3px;">
+                            <a id="grd_not_listesi_btnIstatistik_1" accesskey="i" class="btn btn-default btn-xs" href="javascript:__doPostBack('grd_not_listesi$ctl03$btnIstatistik','')" style="display:inline-block;color:#5B636A;font-family:Open Sans;font-size:9pt;width:100px;"><span class="fal fa-chart-pie-alt"></span>İstatistik</a>
+                            
+                        </td>
+</tr><tr onmouseover="this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#CCE0FC'" onmouseout="this.style.backgroundColor=this.originalstyle;" style="color: rgb(59, 58, 54); border-color: rgb(231, 231, 231); border-width: 1px; border-style: solid; height: 22px;">
+<td align="left" style="padding:3px;">0</td><td align="left" style="padding:3px;">
+                            <span id="grd_not_listesi_lblDersKod_2" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">-------</span>
+                            
+                        </td><td align="left" style="padding:3px;">--------------</td><td align="left" style="padding:3px;"><font color="red">Sonuçlandırılmadı</font></td><td align="left" style="padding:3px;">
+                            <span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Vize&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"> Final&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            
+                            
+                        </td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="left" style="width:105px;padding:3px;">
+                            <a id="grd_not_listesi_btnIstatistik_2" accesskey="i" class="btn btn-default btn-xs" href="javascript:__doPostBack('grd_not_listesi$ctl04$btnIstatistik','')" style="display:inline-block;color:#5B636A;font-family:Open Sans;font-size:9pt;width:100px;"><span class="fal fa-chart-pie-alt"></span>İstatistik</a>
+                            
+                        </td>
+</tr><tr onmouseover="this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#CCE0FC'" onmouseout="this.style.backgroundColor=this.originalstyle;" style="color: rgb(59, 58, 54); background-color: white; border-color: rgb(231, 231, 231); border-width: 1px; border-style: solid; height: 22px;">
+<td align="left" style="padding:3px;">0</td><td align="left" style="padding:3px;">
+                            <span id="grd_not_listesi_lblDersKod_3" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">-------</span>
+                            
+                        </td><td align="left" style="padding:3px;">-------------</td><td align="left" style="padding:3px;"><font color="red">Sonuçlandırılmadı</font></td><td align="left" style="padding:3px;">
+                            <span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Vize&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"> Final&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            
+                            
+                        </td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="left" style="width:105px;padding:3px;">
+                            <a id="grd_not_listesi_btnIstatistik_3" accesskey="i" class="btn btn-default btn-xs" href="javascript:__doPostBack('grd_not_listesi$ctl05$btnIstatistik','')" style="display:inline-block;color:#5B636A;font-family:Open Sans;font-size:9pt;width:100px;"><span class="fal fa-chart-pie-alt"></span>İstatistik</a>
+                            
+                        </td>
+</tr><tr onmouseover="this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#CCE0FC'" onmouseout="this.style.backgroundColor=this.originalstyle;" style="color: rgb(59, 58, 54); border-color: rgb(231, 231, 231); border-width: 1px; border-style: solid; height: 22px;">
+<td align="left" style="padding:3px;">0</td><td align="left" style="padding:3px;">
+                            <span id="grd_not_listesi_lblDersKod_4" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">-------</span>
+                            
+                        </td><td align="left" style="padding:3px;">--------------</td><td align="left" style="padding:3px;"><font color="red">Sonuçlandırılmadı</font></td><td align="left" style="padding:3px;">
+                            <span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Vize&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"> Final&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            
+                            
+                        </td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="left" style="width:105px;padding:3px;">
+                            <a id="grd_not_listesi_btnIstatistik_4" accesskey="i" class="btn btn-default btn-xs" href="javascript:__doPostBack('grd_not_listesi$ctl06$btnIstatistik','')" style="display:inline-block;color:#5B636A;font-family:Open Sans;font-size:9pt;width:100px;"><span class="fal fa-chart-pie-alt"></span>İstatistik</a>
+                            
+                        </td>
+</tr><tr onmouseover="this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#CCE0FC'" onmouseout="this.style.backgroundColor=this.originalstyle;" style="color: rgb(59, 58, 54); background-color: white; border-color: rgb(231, 231, 231); border-width: 1px; border-style: solid; height: 22px;">
+<td align="left" style="padding:3px;">0</td><td align="left" style="padding:3px;">
+                            <span id="grd_not_listesi_lblDersKod_5" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">-------</span>
+                            
+                        </td><td align="left" style="padding:3px;">-------------</td><td align="left" style="padding:3px;"><font color="red">Sonuçlandırılmadı</font></td><td align="left" style="padding:3px;">
+                            <span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Vize&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"> Final&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            
+                            
+                        </td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="left" style="width:105px;padding:3px;">
+                            <a id="grd_not_listesi_btnIstatistik_5" accesskey="i" class="btn btn-default btn-xs" href="javascript:__doPostBack('grd_not_listesi$ctl07$btnIstatistik','')" style="display:inline-block;color:#5B636A;font-family:Open Sans;font-size:9pt;width:100px;"><span class="fal fa-chart-pie-alt"></span>İstatistik</a>
+                            
+                        </td>
+</tr><tr onmouseover="this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#CCE0FC'" onmouseout="this.style.backgroundColor=this.originalstyle;" style="color: rgb(59, 58, 54); border-color: rgb(231, 231, 231); border-width: 1px; border-style: solid; height: 22px;">
+<td align="left" style="padding:3px;">0</td><td align="left" style="padding:3px;">
+                            <span id="grd_not_listesi_lblDersKod_6" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">-------</span>
+                            
+                        </td><td align="left" style="padding:3px;">-----------</td><td align="left" style="padding:3px;"><font color="red">Sonuçlandırılmadı</font></td><td align="left" style="padding:3px;">
+                            <span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">Vize&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"> Final&nbsp;:&nbsp;--</span><span style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            
+                            
+                            
+                        </td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="right" style="padding:3px;">--</td><td align="left" style="width:105px;padding:3px;">
+                            <a id="grd_not_listesi_btnIstatistik_6" accesskey="i" class="btn btn-default btn-xs" href="javascript:__doPostBack('grd_not_listesi$ctl08$btnIstatistik','')" style="display:inline-block;color:#5B636A;font-family:Open Sans;font-size:9pt;width:100px;"><span class="fal fa-chart-pie-alt"></span>İstatistik</a>
+                            
+                        </td>
+
+</tbody></table>
+</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+            <br>
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" class="text-danger">×</span></button>
+                <span id="lblUyari_Notlar" style="display:inline-block;color:#3A3A3A;font-family:Open Sans;font-size:8pt;text-decoration:underline;height:16px;width:50px;">Notlar</span>
+                <br>
+                <span id="lblUyari_1" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"><font color="red"> (Ders Sonuçlandırılmadı olarak görüntülenmesi )</font><font color="blue"> Ne anlama geliyor</font> :<br>1- Yarıyıl sonu sınavı notu henüz girilmedi<br>2- Tüm sınav notları girildi fakat harf notu henüz hesaplanmadı<br>3- Not girişi tamamlanmayan bütünleme sınavı mevcut<br>4- Bütünleme sınav notları girildi fakat henüz harf notu hesaplanmadı</span>
+                <br>
+                <span id="lblUyari_2" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"><font color="blue"> Harf Notunun "--" olarak görünmesi ne anlama geliyor</font>: <br>1) Akademik takvime göre harf notlarının ilan tarihi bekleniyor (Akademik takvimden ilgili tarihleri kontrol edebilirsiniz)<br>2) Ders sonuçlandırılmamış/ilan edilmemiş olabilir<br>3) Derse ait bütünleme sınavı tanımlanmış ise Akademik Takvimde yer alan bütünleme ilan tarihi beklenir</span>
+                <br>
+                <span id="lblDuyuru" title="OGR_NL" style="color:#3A3A3A;font-family:Open Sans;font-size:8pt;"></span>
+            </div>
+        </td>
+    </tr>
+</tbody>
+
+    </footer>
+
+    <div class="container mt-4"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
