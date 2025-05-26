@@ -87,7 +87,7 @@ Adımlar:
 1. Python 3.x kurulu olmalı
 
 
-2. git clone <repo_link> komutu ile proje indirilmeli
+2. git clone < https://github.com/sidi96056/int.git > komutu ile proje indirilmeli
 
 
 3. Terminalden proje klasörüne girilmeli
