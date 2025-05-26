@@ -1,7 +1,11 @@
 Öğrenci Bilgi Sistemi
 
+render site : https://int1.onrender.com/  
+
+
+
 Ad Soyad : SIDAHMED MOHAMED BEWBE
-Numara:2411084715
+Numara:2411081547
 
 1. Projenin Amacı (Neden bu proje?)
 
