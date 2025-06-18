@@ -133,5 +133,9 @@ def Uyumluluk():
 def Yenileme():
     return render_template('Yenileme.html')
 
+@app.route('/sifre')
+def sifre():
+    return render_template('sifre.html')
+
 if __name__== '__main__':
     app.run(debug=True)
