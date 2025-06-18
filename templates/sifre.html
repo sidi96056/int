@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <style>
+                .card {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    margin: 0;
+                }
+        
+                .reset-password-container {
+                    background-color: white;
+                    padding: 30px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    width: 300px;
+                    text-align: center;
+                }
+        
+                .reset-password-container h2 {
+                    color: #388278;
+                }
+        
+                .reset-password-container input {
+                    width: 100%;
+                    padding: 10px;
+                    margin: 10px 0;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+        
+                .reset-password-container button {
+                    background-color: #388278;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    width: 100%;
+                }
+        
+                .reset-password-container button:hover {
+                    background-color: #2e6f56;
+                }
+        
+                .reset-password-container .back-to-login {
+                    margin-top: 10px;
+                    color: #388278;
+                    text-decoration: none;
+                }
+        
+                .reset-password-container .back-to-login:hover {
+                    text-decoration: underline;
+                }
+
+
+            </style>
+            
+            
+            
+            <div class="reset-password-container">
+                <h2>Şifrenizi Mi Unuttunuz?</h2>
+                <p>Aşağıya e-posta adresinizi girin, şifrenizi sıfırlamak için talimatları size gönderelim.</p>
+                
+                <form action="/login" method="POST" method="GET">
+                    <input type="email" id="email" name="email" placeholder="E-posta adresinizi girin" required>
+                    <button type="submit" href="/login">Şifre Sıfırlama Linki Gönder</button>
+                </form>
+                
+                <a href="/login" class="back-to-login">Giriş Yap</a>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
