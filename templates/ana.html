@@ -16,12 +16,17 @@
     />
     
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script defer id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({ startOnLoad: true });</script>
+ 
   </head>
-  <body>
+  <body id="id">
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="/">Öğrenci Bilgi Sistemi</a>
+        <a class="navbar-brand" href="#">Öğrenci Bilgi Sistemi</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -78,7 +83,7 @@
         <ul class="nav-links">
           <li class="li-links">
             <div>
-              <a href="/hos1">  
+              <a href="/ana">  
                 <span class="bi bi-house-fill"></span>
                 <span>Hoş Geldiniz</span>
               </a>
@@ -136,7 +141,7 @@
             </a>
             <span class="bi bi-chevron-down"></span>
               <ul id="close" class="sublist"> 
-              <li  style="margin-bottom: 10px;"><a href=" # "> sifri degistir</a></li>
+              <li  style="margin-bottom: 10px;"><a href="/sifre"> sifri degistir</a></li>
                 <li  style="margin-bottom: 10px;"><a href=" # "> email degistir</a></li>
               </ul>
           </li>
@@ -197,7 +202,308 @@
     </div>
     </section>
    
+  
+    
+    <footer id="ft1">
+      <div id="obs-about-us">
+        <h1 style="color: #cc9900">Öğrenci Bilgi Sistemine Hoşgeldiniz (OBS)</h1>
+        <h3 style="color: #388278">Türkiye'nin önde gelen öğrenci bilgi platformu ile eğitim yolculuğunuzu sorunsuzca yönetin.</h3>
+        <div class="table-of-contents" data-in-title-background="false">
+          <ol class="toc-list">
+            <li><a class="toc-link" href="#heading-1"><span >OBS Hakkında Temel Bilgiler</span></a></li>
+            <li><a class="toc-link" href="#heading-2"><span >Öğrenci Bilgi Sistemi: Türkiye'de Eğitimi Dönüştürüyor</span></a></li>
+            <li><a class="toc-link" href="#heading-3"><span >OBS Etki Görselleştirmesi</span></a></li>
+            <li><a class="toc-link" href="#heading-4"><span >Ekosistemi Anlama: OBS Bağlamında</span></a></li>
+            <li><a class="toc-link" href="#heading-5"><span >OBS’in Temel Özellikleri</span></a></li>
+            <li><a class="toc-link" href="#heading-6"><span >Daha Fazla Keşif: Türkiye'de Eğitim Sistemleri</span></a></li>
+            <li><a class="toc-link" href="#heading-7"><span >OBS ile İlgili Sıkça Sorulan Sorular</span></a></li>
+            </ol>
+        </div>
+        <hr/>
+        <h2 id="heading-1" style="color: #cc9900;"><b style="color: #cc9900;">OBS Hakkında Temel Bilgiler</b></h2>
+        <ul style="background: rgba(56,130,120,0.1);padding: 30px 10%;border-radius: 8px;width: 80%; border-left: 4px solid #388278;">
+          <li><b>Kapsamlı Yönetim:</b> OBS, öğrenci yaşamının tüm yönlerini —kabulden ders kaydına, notlara, devamsızlığa ve idari kayıtlara kadar— merkezileştirerek birleşik bir akademik ekosistem yaratır.</li>
+          <li><b>Artırılmış Verimlilik ve İletişim:</b> Sistem, eğitim süreçlerini önemli ölçüde hızlandırır, manuel hataları azaltır ve öğrenci, öğretim görevlisi ile idari personel arasında şeffaf iletişimi güçlendirerek daha verimli ve bağlı bir öğrenme ortamı sağlar.</li>
+          <li><b>Kullanıcı Odaklı Erişim:</b> Kullanıcı dostu arayüzü ve güçlü güvenlik önlemleriyle tasarlanmış olan OBS, önemli akademik bilgilere güvenli ve gerçek zamanlı erişim sunarak kullanıcıların eğitim yolculuğunu her an, her yerden yönetmesine olanak tanır.</li>
+        </ul>
+        <hr/>
+        <h2 id="heading-2" style="color: #cc9900">Öğrenci Bilgi Sistemi: Türkiye’de Eğitimi Dönüştürüyor</h2>
+        <p>
+          Öğrenci Bilgi Sistemine (OBS) hoş geldiniz. Bu dinamik ve temel web tabanlı platform, Türkiye'deki eğitim kurumlarında akademik ve idari yönetimin belkemiğini oluşturur. OBS, yalnızca bir sistem olmanın ötesinde; öğrenci verilerinin ve eğitim süreçlerinin tüm yönlerini modernize etmek ve merkezileştirmek için tasarlanmış kapsamlı bir çözümdür. Kabulden mezuniyete kadar, OBS öğrenci, öğretim görevlisi ve idari personel için düzenli, verimli ve şeffaf bir deneyim sağlar.
+        </p>
+        <p>
+          Türkiye'deki üniversiteler ve okullarda OBS gibi gelişmiş öğrenci bilgi sistemlerinin kullanımı giderek yaygınlaşıyor. Bu sistemler, geleneksel eğitim yaklaşımlarını dönüştürmek, gerçek zamanlı veri erişimi sağlamak ve sağlam iletişimi kolaylaştırmak için kritik önemdedir. Çeşitli akademik ve idari işlevleri tek, sezgisel bir arayüzde birleştirerek, OBS kurumların manuel veri yönetimine daha az, öğrenci başarısına daha fazla odaklanmasını sağlar.
+        </p>
+        <h3 style="color: #388278">Temel İşlevler ve Faydalar</h3>
+        <p>
+          OBS, akademik yaşamı basitleştirmek ve genel eğitim deneyimini geliştirmek için tasarlanmıştır. Çeşitli cihaz dostu özellikleri akademik ortamın tüm paydaşlarına önemli faydalar sunar.
+        </p>
+        <h4 style="color: #7FA86E;"><b style="color: #7FA86E;">Güvenli ve Kişiselleştirilmiş Erişim</b></h4>
+        <p>
+          OBS, güvenli giriş bilgileri sağlar; her kullanıcı —bir öğrenci, öğretim görevlisi veya personel— kişiselleştirilmiş bir kontrol paneline erişir. Bu özel erişim, hassas bilgileri korur ve kullanıcının kurum içindeki rolüyle doğrudan ilgili içerikleri anında sunar. Sistemin sağlam güvenlik özellikleri, veri bütünlüğü ve gizliliğin korunmasında hayati önemdedir.
+        </p>
+        <h4 style="color: #7FA86E;"><b style="color: #7FA86E;">Kapsamlı Akademik Yönetim</b></h4>
+        <p>
+          OBS, tüm akademik faaliyetlerin merkezi bir noktasıdır. Öğrenciler kolayca ders kaydı yapabilir, programlarını görüntüleyebilir ve gerekli ders materyallerine erişebilir. Öğretim görevlileri ise derslerini yönetip, öğrenci ilerlemesini takip edip, notları kayıt edebilir. Bu kapsamlı yönetim yeteneği, tüm akademik süreçlerin entegre olmasını sağlarken, idari yükleri azaltır ve operasyonel verimliliği artırır.
+        </p>
+        <p>
+          Ders yönetiminin ötesinde, OBS tüm akademik kayıtları merkezileştirir. Öğrenciler notlarını görebilir, transkriptlerini alabilir ve eğitim geçmişine tek bir yerden erişebilir. Bu özellik, şeffaflığı artırır ve öğrencinin akademik yolculuğu boyunca ilerlemesini net bir şekilde görmesini sağlar.
+        </p>
+        <h4 style="color: #7FA86E;"><b style="color: #7FA86E;">Gelişmiş İletişim ve Bildirimler</b></h4>
+        <p>
+          Etkili iletişim, her eğitim ortamında hayati öneme sahiptir. OBS, herkesi bilgilendirmek için güçlü iletişim araçları sunar. Bildirimler ve güncellemelerle öğrenciler ve eğitimciler önemli akademik duyurulardan, yaklaşan etkinliklerden ve kritik son teslim tarihlerinden haberdar olur. Bu, daha bağlı ve tepki veren bir öğrenme ekosistemi oluşturarak bilgi akışını hızlandırır ve yanlış anlamaları azaltır.
+        </p>
+        <h4 style="color: #7FA86E;"><b style="color: #7FA86E;">Düzenlenmiş İdari Süreçler</b></h4>
+        <p>
+          Eğitim kurumları için OBS, karmaşık idari görevleri kolaylaştırır. Öğrenci kaydı, demografi, devamsızlık takibi ve performans analizi gibi işlemleri verimli bir şekilde yönetir. Bazı sistemler faturalandırma, disiplin ve ek hizmet modüllerini de entegre eder; gerçek anlamda bütünsel bir okul yönetimini mümkün kılar. Bu süreçleri otomatikleştirerek veri hatalarını önemli ölçüde azaltır, veri odaklı karar almaya destek olur ve böylece öğrenci başarısını ve kurumsal verimliliği artırır.
+        </p>
+        <p>
+          Bu platform, Türkiye'nin ulusal eğitim yapısında kritik bir rol oynar ve eğitim yönetimini modernize etmeye önemli katkı sağlar. Web tabanlı erişim sayesinde temel bilgiler her zaman her yerden ulaşılabilir hale gelir, böylece daha bağlı ve etkili bir öğrenme ortamı yaratılır.
+        </p>
+        <hr/>
+        <h2 id="heading-3" style="color: #cc9900">OBS Etki Görselleştirmesi</h2>
+        <p>
+          Öğrenci Bilgi Sisteminin çok yönlü katkılarını daha iyi anlatmak için, etkinin bazı temel alanlarda nasıl görselleştirilebileceğini sunuyoruz. Aşağıdaki grafikleri, OBS’in eğitim yönetimindeki güçlü yönlerine dair fikir birliği analizi olarak düşünebilirsiniz.
+        </p>
+      </div>
+      <div style="height: 500px;"><canvas id="radarCanvas"></canvas></div> 
+<script id="site_chart_radar">
+    const ctxRadar = document.getElementById("radarCanvas");
+    const radarChart = new Chart(ctxRadar, {
+        type: 'radar',
+        data: {
+            labels: ['Akademik Kayıt Yönetimi', 'İletişim Verimliliği', 'Kullanıcı Erişilebilirliği', 'Güvenlik ve Veri Bütünlüğü', 'İdari Süreçlerin Basitleştirilmesi', 'Öğrenci Desteği'],
+            datasets: [{
+                label: 'OBS Etki Değerlendirmesi (1-5 Arası Ölçek)',
+                data: [5, 4, 5, 4, 5, 4],
+                backgroundColor: 'rgba(56, 130, 120, 0.2)',
+                borderColor: '#388278',
+                pointBackgroundColor: '#388278',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#388278',
+                borderWidth: 2,
+                lineTension: 0.2,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 5,
+                    ticks: {
+                        backdropColor: 'rgba(0, 0, 0, 0)',
+                        color: '#888888',
+                        stepSize: 1
+                    },
+                    pointLabels: {
+                        color: '#888888',
+                        font: {
+                            size: 14
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(136, 136, 136, 0.3)'
+                    },
+                    angleLines: {
+                        color: 'rgba(136, 136, 136, 0.3)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#888888'
+                    }
+                }
+            }
+        }
+    });
+    radarChart.update();
+</script>
+<p style="text-align: center;"><i>Bu radar grafiği, OBS'nin akademik ve idari işlevsellik açısından kritik alanlardaki güçlü yönlerini 1'den 5'e kadar bir ölçekle değerlendirmektedir.</i></p>
+<div style="height: 500px;"><canvas id="barCanvas"></canvas></div>
+<script id="site_chart_bar"> 
+  const ctxBar = document.getElementById("barCanvas");
+  const barChart = new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+          labels: ['Benimsenme Oranı (Türk Üniversiteleri)', 'Kullanıcı Memnuniyeti', 'Veri Doğruluğu', 'Sistem Entegrasyon Yeteneği', 'Ölçeklenebilirlik Potansiyeli'],
+          datasets: [{
+              label: 'OBS Performans Göstergeleri (0-10 Ölçeği)',
+              data: [9, 8, 9, 7, 8],
+              backgroundColor: [
+                  'rgba(127, 168, 110, 0.7)',
+                  'rgba(56, 130, 120, 0.7)',
+                  'rgba(204, 153, 0, 0.7)',
+                  'rgba(127, 168, 110, 0.7)',
+                  'rgba(56, 130, 120, 0.7)'
+              ],
+              borderColor: [
+                  '#7FA86E',
+                  '#388278',
+                  '#cc9900',
+                  '#7FA86E',
+                  '#388278'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+              y: {
+                  beginAtZero: true,
+                  max: 10,
+                  ticks: {
+                      color: '#888888'
+                  },
+                  grid: {
+                      color: 'rgba(136, 136, 136, 0.3)'
+                  }
+              },
+              x: {
+                  ticks: {
+                      color: '#888888'
+                  },
+                  grid: {
+                      color: 'rgba(136, 136, 136, 0.3)'
+                  }
+              }
+          },
+          plugins: {
+              legend: {
+                  labels: {
+                      color: '#888888'
+                  }
+              }
+          }
+      }
+  });
+  barChart.update();
+</script>
+      <p style="text-align: center;"><i>Bu çubuk grafik, OBS'nin anahtar göstergelerindeki performansını 0'dan 10'a kadar bir ölçekle değerlendirmektedir.</i></p>
+      <hr/><h2 id="heading-4" style="color: #cc9900">Ekosistemi Anlama: OBS Bağlamında</h2>
+      <p>
+          OBS'nin önemi, yalnızca teknik özelliklerinden daha geniştir; eğitimde teknolojiyi ilerletmeye yönelik bir taahhüdü temsil eder. Kapsamını tam olarak takdir edebilmek için, sağlam bir öğrenci bilgi sistemi oluşturan birbiriyle bağlantılı unsurları görselleştirmek faydalı olacaktır.
+      </p>
+      <div class="mermaid" style="width: 100%;">
+          mindmap
+              root["Öğrenci Bilgi Sistemi (OBS)"]
+                  Academic_Management["Akademik Yönetim"]
+                      Course_Registration["Ders Kaydı"]
+                      Grade_Tracking["Not Takibi"]
+                      Attendance_Monitoring["Devamsızlık Takibi"]
+                      Curriculum_Planning["Müfredat Planlaması"]
+                  Student_Services["Öğrenci Hizmetleri"]
+                      Personal_Dashboards["Kişisel Kontrol Panelleri"]
+                      Announcement_Notifications["Duyuru Bildirimleri"]
+                      Transcript_Access["Transkript Erişimi"]
+                      Financial_Aid_Management["Mali Yardım Yönetimi"]
+                  Administrative_Efficiency["İdari Verimlilik"]
+                      Data_Centralization["Veri Merkezileştirme"]
+                      Reporting_Analytics["Raporlama ve Analitik"]
+                      Staff_Management["Personel Yönetimi"]
+                      Resource_Allocation["Kaynak Dağılımı"]
+                  Security_Compliance["Güvenlik ve Uyumluluk"]
+                      Data_Privacy["Veri Gizliliği"]
+                      Secure_Access["Güvenli Erişim"]
+                      Regulatory_Adherence["Mevzuata Uyum"]
+                  Communication_Collaboration["İletişim ve İşbirliği"]
+                      Faculty_Student_Interaction["Öğretim Görevlisi-Öğrenci Etkileşimi"]
+                      Parent_Portals["Veli Portalları"]
+                      Inter-Department_Communication["Departmanlar Arası İletişim"]
+      </div>
+      <script id="site_mindmap">
+          mermaid.initialize({ startOnLoad: true });
+      </script>
+      <p style="text-align: center;"><i>Bu zihin haritası, OBS gibi kapsamlı bir öğrenci bilgi sistemini tanımlayan ana bileşenleri ve birbiriyle bağlantılı işlevsellikleri göstermektedir.</i></p>
+      <hr/><h2 id="heading-5" style="color: #cc9900">Öğrenci Bilgi Sistemi'nin Temel Özellikleri</h2>
+      <p>
+          OBS'nin yeteneklerini daha net bir şekilde sunabilmek için aşağıdaki tablo, ana özelliklerini ve bunların eğitim ortamındaki çeşitli kullanıcılar için doğrudan faydalarını özetlemektedir.
+      </p>
+      <table>
+      <thead>
+      <tr>
+      <th>Özellik</th>
+      <th>Açıklama</th>
+      <th>Öğrenciler İçin Faydası</th>
+      <th>Öğretim Görevlileri/Personel İçin Faydası</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>Güvenli Giriş ve Kişisel Kontrol Paneli</td>
+      <td>Akademik ve idari bilgilere kişiselleştirilmiş, güvenli erişim.</td>
+      <td>Notlara, ders programlarına ve kişiselleştirilmiş duyurulara güvenli erişim.</td>
+      <td>Dersleri, öğrenci verilerini ve idari görevleri verimli bir şekilde yönetme.</td>
+      </tr>
+      <tr>
+      <td>Ders Yönetimi</td>
+      <td>Kayıt, ders programlarını görüntüleme ve ders materyallerine erişim.</td>
+      <td>Kolay ders kaydı ve öğrenme kaynaklarına erişim.</td>
+      <td>Sınıf yönetimini ve materyal dağıtımını kolaylaştırma.</td>
+      </tr>
+      <tr>
+      <td>Akademik Kayıtlar</td>
+      <td>Notlar, transkriptler ve akademik geçmişin merkezi depolanması ve erişimi.</td>
+      <td>Akademik ilerleme ve başarıların kapsamlı görünümü.</td>
+      <td>Öğrenci performansını izlemek ve kayıtları yönetmek için verimli araçlar.</td>
+      </tr>
+      <tr>
+      <td>İletişim Araçları</td>
+      <td>Duyurular, bildirimler ve güncellemeler için sistem.</td>
+      <td>Önemli etkinlikler ve akademik son tarihlerle ilgili bilgilendirilme.</td>
+      <td>Kurum içi güncellemeler ve uyarılar için etkili bir iletişim kanalı.</td>
+      </tr>
+      <tr>
+      <td>Devamsızlık Takibi</td>
+      <td>Öğrenci devamsızlıklarının kaydedilmesi ve izlenmesi.</td>
+      <td>Devamsızlık kayıtlarında şeffaflık.</td>
+      <td>İdari ve akademik amaçlar için doğru devamsızlık verisi.</td>
+      </tr>
+      <tr>
+      <td>Veri Merkezileştirme</td>
+      <td>Tüm öğrenci ve kurum bilgileri için birleşik bir veritabanı.</td>
+      <td>Kişisel ve akademik verilere tutarlı ve doğru erişim.</td>
+      <td>Veri tekrarını azaltma ve veri bütünlüğünü artırma.</td>
+      </tr>
+      <tr>
+      <td>Raporlama ve Analitik</td>
+      <td>Raporlar oluşturma ve akademik eğilimleri analiz etme araçları.</td>
+      <td>Doğrudan uygulanabilir değil, ancak gelişmiş kurumsal karar alımından fayda sağlama.</td>
+      <td>Akademik planlama, kaynak tahsisi ve politika geliştirme için içgörüler.</td>
+      </tr>
+      </tbody>
+      </table>
+      <p style="text-align: center;"><i>Bu tablo, Öğrenci Bilgi Sistemi'nin (OBS) ana özelliklerini ve bunların öğrenciler, öğretim görevlileri ve personel için faydalarını özetlemektedir.</i></p>
+      <hr/><h2 id="heading-6" style="color: #cc9900">Daha Fazla Keşif: Türkiye’de Eğitim Sistemleri</h2>
+      <p>
+          OBS, Öğrenci Bilgi Sistemi’ni ifade etmekle birlikte, Türkiye’deki eğitim teknolojisi ve bilgi sistemlerinin daha geniş bir bağlamında çalışır. Daha derin bir anlayış sağlamak için, Türkiye’deki Bilgi Sistemleri Mühendisliği hakkında uluslararası öğrencilerin deneyimlerini ele alan bu videoyu inceleyebilirsiniz; bu video, eğitim teknolojisinin daha geniş manzarasını ele almaktadır.
+      </p>
+      <div style="text-align: center;">
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="400" src="https://www.youtube.com/embed/dBrOPS4Xt2A" width="700"></iframe>
+      </div>
+      <p style="text-align: center;"><i>“Bilgi Sistemleri Mühendisliği hakkında uluslararası öğrenciler…” başlıklı bu video, Türkiye’deki Bilgi Sistemleri Mühendisliği okuma deneyimlerine dair bakış açıları sunmaktadır. OBS gibi sistemlerin kullanıldığı ve geliştirildiği eğitim ortamına dair bir bağlam sunarak, ülkenin eğitimde teknolojik ilerlemeye verdiği önemi vurgulamaktadır. Bu bakış açısı, OBS gibi gelişmiş sistemlerin akademik ortama nasıl entegre olduğunu anlamamıza katkıda bulunmaktadır.</i></p>
+      <br/>
+      <p>
+          Bu video, OBS gibi sistemlerin geliştirildiği ve kullanıldığı akademik ortamı değerli bir şekilde gözler önüne seriyor. Türkiye'nin eğitim altyapısını teknolojiyle modernize etme taahhüdünü vurgulayan video, gerçek dünyada bilgi sistemleriyle etkileşimde bulunan öğrencilerin deneyimlerini sunuyor. Bu genişletilmiş anlayış, OBS gibi platformların çağdaş eğitimi desteklemek için ne kadar önemli ve sofistike olduğunu pekiştiriyor.
+      </p>
+      <hr/><h2 id="heading-7" style="color: #cc9900">OBS Hakkında Sıkça Sorulan Sorular</h2>
+      <div class="faq-question">OBS ne anlama gelir?</div>
+      <div class="faq-answer">OBS, Öğrenci Bilgi Sistemi'nin kısaltmasıdır. Bu, eğitim kurumlarında akademik ve idari verileri yönetmek için kapsamlı bir çevrimiçi platformdur.</div>
+      <div class="faq-question">OBS'yi kimler kullanır?</div>
+      <div class="faq-answer">OBS, öğrencilerin akademik yolculuklarını yönetmeleri, öğretim görevlilerinin ders ve öğrenci yönetimini yapmaları, idari personelin ise kurumsal verileri ve idari süreçleri yönetmeleri için kullanılır.</div>
+      <div class="faq-question">OBS kullanmanın ana faydaları nelerdir?</div>
+      <div class="faq-answer">Ana faydalar arasında akademik süreçlerin hızlanması, iletişimin güçlenmesi, güvenli bilgi erişimi, veri doğruluğunun artması ve öğrencilerin akademik başarılarına destek sunulması yer alır.</div>
+      
 
+   </footer>>
+    
 
 
     
@@ -205,6 +511,78 @@
 
     <div class="container mt-4"></div>
 
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <footer id="ft">
+      <div>
+        <nav class="bibi">
+          <a
+            href="https://www.facebook.com/profile.php?id=61554891076808&mibextid=ZbWKwL"
+            target="_blank"
+            ><span id="fb" class="bi bi-facebook"></span
+          ></a>
+          <a href="#" target="_blank"
+            ><span id="fb" class="bi bi-instagram"></span>
+          </a>
+          <a
+            href="https://x.com/GumushaneSBKY?t=flcqQuQ9kz9blzWsATQqxA&s=09"
+            target="_blank"
+            ><span id="fb" class="bi bi-twitter"></span
+          ></a>
+          <a
+            href="https://youtube.com/channel/UC2ADjjuglSwzMBRVueIwvUA?si=a-3dO8GTQ7_nBygi"
+            target="_blank"
+          >
+            <span id="fb" class="bi bi-youtube"></span>
+          </a>
+        </nav>
+      </div>
+      <div>
+        <menu>
+          <details>
+            <summary>
+              <a id="al" href="https://gumushane.edu.tr/" target="_blank"
+                >Ana sayfa</a
+              >
+            </summary>
+            <div></div>
+            <div></div>
+          </details>
+        </menu>
+      </div>
+      <div>
+        <menu>
+          <details>
+            <summary><a id="al" href="https://www.yurtlarburada.com/universiteler/gumushane-universitesi-hakkinda?form=MG0AV3" target="_blank">Hakımızda</a></summary>
+            <div></div>
+            <div></div>
+          </details>
+        </menu>
+      </div>
+      <div>
+        <menu>
+          <details open>
+            <summary>
+              <a
+                id="al"
+                href="https://oidb.gumushane.edu.tr/tr/iletisim/"
+                target="_blank"
+                >iletişim</a
+              >
+            </summary>
+            <div>90-4562331115</div>
+            <div>obs@unıversıtı.edu.tr</div>
+          </details>
+        </menu>
+      </div>
+    </footer>
+    <footer class="footer1">
+      <div>
+        <div class="footer2">
+          <p>&copy; 2025 Öğrenci Bilgi Sistemi</p>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
