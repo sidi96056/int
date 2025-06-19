@@ -1,5 +1,5 @@
 
-h1{ color:rgb(0, 0, 0);
+h1{ color:rgb(255, 255, 255);
     text-align: center;
     font-weight: bolder;
     font-size: 250%;
@@ -7,14 +7,14 @@ h1{ color:rgb(0, 0, 0);
 }
 h2 {
     margin: 30px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-align: center;
     font-weight: bolder;
     font-size: 150%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 nav{
-    padding: 300px;
+    padding: 10px;
     text-align: center;
 }
 #btn{
@@ -24,8 +24,12 @@ nav{
     padding: var(--padding);
      background-color: #4793ea;
       transition: box-shadow 0.25s;
-    color:black;
+    color:rgb(255, 255, 255);
     text-decoration: none;
     border:20px;
     border-radius:10%;
+}
+body{
+    background-color:rgb(22, 86, 236);
+
 }
