@@ -70,6 +70,12 @@ def logout():
     logout_user()
     return redirect(url_for('login.html'))
 
+@app.route("/")
+def image():
+    image=url_for('static',filename='OBS.png')
+    return render_template("/base.html")
+
+
 @app.route('/ana')
 @login_required
 def ana():
